@@ -22,7 +22,7 @@ class Reek(RubyLinter):
     defaults = {
         'selector': 'source.ruby - text.html - text.haml'
     }
-    cmd = ('ruby', '-S', 'reek')
+    cmd = ('~/.rbenv/shims/reek', '-s')
     regex = r'^.+?\[(?P<line>\d+).*\]:(?P<message>.+) \[.*\]'
     tempfile_suffix = 'rb'
 
