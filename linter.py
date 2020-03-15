@@ -10,22 +10,21 @@
 
 """This module exports the Reek plugin class."""
 
-from SublimeLinter.lint import RubyLinter, util
+from SublimeLinter.lint import RubyLinter
 import re
 
-
-# SublimeLinter: WARNING: reek: Implicit appending a filename to `cmd` has been deprecated, add '${temp_file}' explicitly.
 
 class Reek(RubyLinter):
     """Provides an interface to reek."""
 
-    defaults = {
-        'selector': 'source.ruby - text.html - text.haml'
-    }
-    cmd = ('~/.rbenv/shims/reek', '${temp_file}')
+   'defaults' = {
+       'selector': 'source.ruby - text.html - text.haml'
+   }
+
+    cmd = 'ruby -S reek'
     regex = r'^.+?\[(?P<line>\d+).*\]:(?P<message>.+) \[.*\]'
     tempfile_suffix = 'rb'
-
+    config_file = ('-c', 'config.reek')
 
     def split_match(self, match):
         """Extract named capture groups from the regex and return them as a tuple."""
